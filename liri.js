@@ -13,6 +13,13 @@ function differentParamFunction() {
         case "my-tweets":
             twitter();
             break;
+        case "spotify-this-song":
+
+            if (arg3 == undefined){
+                arg3 = "Closer";
+            }
+            spotify();
+            break;
         case "movie-this":
 
             if(arg3 == undefined){
@@ -23,9 +30,6 @@ function differentParamFunction() {
              // i changed the name of the do-what-it-says cause i kept forgetting what i was trying to do there
         case "read-random":
             readMeRandom();
-            break;
-        case "spotify-this-song":
-            console.log(arg3)
             break;
         default:
             console.log('invalid entry');
@@ -45,6 +49,25 @@ function readMeRandom() {
         differentParamFunction();
 
     }); //fs ends here
+}
+
+function spotify() {
+    console.log(arg3);
+    var spotifyApi = new Spotify();
+
+
+    spotifyApi.searchTracks(arg3, {limit: 1}).then(function (data) {
+            var tracks = data.body.tracks.items;
+            
+            for (var i in tracks) {
+                console.log("-------------");
+                console.log("Artist: " + tracks[i].artists[0].name);
+                console.log("Song: " + tracks[i].name);
+                console.log("Preview: " + tracks[i].preview_url);
+                console.log("Album: " + tracks[i].album.name);
+            }
+        console.log("--end result--" + "\n");
+    });
 }
 
 // function to grab my info from my favorite movie the town
