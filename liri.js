@@ -24,6 +24,9 @@ function differentParamFunction() {
         case "read-random":
             readMeRandom();
             break;
+        case "spotify-this-song":
+            console.log(arg3)
+            break;
         default:
             console.log('invalid entry');
     }
@@ -35,7 +38,7 @@ function readMeRandom() {
         if(error){
             console.log(error);
         } else {
-            var dataArr = data.split(" , ");
+            var dataArray = data.split(",");
             arg2 = dataArray[0];
             arg3 = dataArray[1];
         }
@@ -80,7 +83,7 @@ function twitter(){
 
     //twitter params
     var parameters = {
-        twitterHandle: 'JaeGomez',
+        twitterHandle: 'JaeGomez_',
         count: 21
     };
     //get tweets from twitter
